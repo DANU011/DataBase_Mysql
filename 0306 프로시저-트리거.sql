@@ -173,36 +173,3 @@ COMMIT;
 SELECT * FROM 상품;
 
 #===========================================================
-
-/* 상품이 입고되면 입고수량+ > 재고수량 + , 입고.상품코드 = 상품.상품코드
-상품이 출고되면 출고수량+ > 재고수량 - , 출고.상품코드 = 상품.상품코드
-if 출고수량 <= 재고수량*/
-
-delimiter // 
-CREATE TRIGGER 상품입고 
-declare 입고수 int;
-set 입고수=재고수량+입고수량;
-AFTER INSERT ON 상품 FOR EACH ROW 
-BEGIN  
-INSERT INTO 상품 
-VALUES; 
-END; 
-// delimiter ;
-
-insert into 입고 values (1,'AAAAAA',curdate(),10,50000);
-select * from 입고;
-select * from 상품;
-
-
-delimiter // 
-CREATE TRIGGER 상품출고 
-AFTER INSERT ON 상품 FOR EACH ROW 
-BEGIN  
-INSERT INTO 상품 
-VALUES; 
-END; 
-// delimiter ;
-
-insert into 출고 values ( , , , , );
-select * from 출고;
-select * from 상품;
