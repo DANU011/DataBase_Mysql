@@ -73,7 +73,7 @@ if stock >= NEW.판매수량 then
      set 재고수량 = stock-NEW.판매수량
      where 상품코드 =NEW.상품코드;
     else
-     signal sqlstate '45000' set message_text = '재고수량 부족으로 판매 불가';
+     signal sqlstate '45000' ; # set message_text = '재고수량 부족으로 판매 불가'
     end if;
 END; 
 // delimiter ;

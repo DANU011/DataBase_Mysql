@@ -88,7 +88,7 @@ create trigger account_beforupdate
 before update on account for each row
 begin
 if(new.amount<0) then 
-signal sqlstate '45000';
+signal sqlstate '45000' set message_text = 'account err';
 end if;
 end;
 // delimiter ;
