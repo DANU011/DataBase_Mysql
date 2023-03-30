@@ -1,0 +1,32 @@
+package sqlconnection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class InsertUser {
+	public static void main(String[] args) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("JDBC드라이버 로딩 오류");
+			e.printStackTrace();
+			return;
+			
+		} // 2. 드라이브 로딩
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db0321", "root", "1234"); // 3. DB 연결
+			psmt=conn.prepareStatement("insert into book1 valuse(kdk,'정과장','456s@naver.com')");
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("DB 연결 오류");
+
+		}
+	}	
+}
